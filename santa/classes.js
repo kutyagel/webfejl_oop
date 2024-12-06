@@ -8,6 +8,11 @@ class Factory{
     addMano(mano)
     {
         this.manolist.push(mano)
+        createRow(mano)
+    }
+    createId() //mano kap id-t amikor megy dolgozni
+    {
+        return this.manolist.length //a manolista hosszabol lesz az id amit leker 
     }
 }
    

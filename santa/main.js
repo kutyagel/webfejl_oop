@@ -55,7 +55,6 @@ function initTable(){
       }
       console.log(comp) //companiont kiirjuk a consolera
       factory.addMano(comp) //factoryho hozzaadjuk
-      createRow(comp)
 
    }
    console.log(factory)
