@@ -40,10 +40,22 @@ document.getElementById('product').addEventListener('submit',function(e){
    addProductForm(form, factory)
 });
 
+
 /**
 * table render
 */
 function initTable(){
+   for (let i=0; i < companionList.length; i++) //vegig iteral az array-en (companionList)
+   {
+      const mano = companionList[i] //List i-edik eleme kivéve
+      const comp = new Companion(i, mano.firstName, mano.lastName, mano.area)//Companion objektum létrehozása, construktorra példányosítjuk
+      for (const product of mano.products)//mano objktum products-on megy végig
+      {
+         comp.AddProduct(product)//hozzáadja a companion objekumhoz a productot
+      }
+      console.log(comp)
+
+   }
 
    // TODO 6
 }
