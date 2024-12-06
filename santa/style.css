@@ -1,0 +1,27 @@
+table, tr, td, th{
+    border: 2px, solid, black;
+    border-collapse: collapse;
+}
+
+#products{
+    display: none;
+}
+#companion_name{
+    display: none;
+}
+#companion{
+    width: fit-content;
+    border: 5px solid rgb(130, 55, 205);
+}
+#product{
+    width: fit-content;
+    border: 5px solid rgb(119, 3, 236);
+}
+.row-container{
+    display: flex;
+}
+.row-container > *{
+    margin: 12px;
+    padding: 6px;
+    border-radius: 4px;
+}
