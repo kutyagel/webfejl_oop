@@ -21,7 +21,10 @@ class Factory{
             this.reszleg = reszleg
             this.products = []
         }
-        AddProduct(product){
+        AddProduct(product){//prod hozzaad
             this.products.push(product)
+        }
+        getName(){ //teljes nev kiiras
+            return this.keresztnev + " " + this.vezeteknev
         }
    }

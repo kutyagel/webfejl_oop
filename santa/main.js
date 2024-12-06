@@ -53,9 +53,12 @@ function initTable(){
       {
          comp.AddProduct(product)//hozzáadja a companion objekumhoz a productot
       }
-      console.log(comp)
+      console.log(comp) //companiont kiirjuk a consolera
+      factory.addMano(comp) //factoryho hozzaadjuk
+      createRow(comp)
 
    }
+   console.log(factory)
 
    // TODO 6
 }
