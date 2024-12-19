@@ -11,11 +11,11 @@ table, tr, td, th{
 }
 #companion{
     width: fit-content;
-    border: 5px solid rgb(130, 55, 205);
+    border: 5px solid rgb(217, 60, 60);
 }
 #product{
     width: fit-content;
-    border: 5px solid rgb(119, 3, 236);
+    border: 5px solid rgb(255, 222, 222);
 }
 .row-container{
     display: flex;
