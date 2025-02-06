@@ -42,10 +42,11 @@ class DataManager{
      * @param {Number} age
      */
     filterAge(age){
-        const result = [];
-        for (const elem1 of this.#array) {
-            if (elem1.eletkor === age)
-            result.push(elem1)
+        const result = []
+        for (const elem of this.#array) {
+            if (elem.eletkor === age){
+            result.push(elem)
+            }
         }
         this.#updateCallback(result)
     }
@@ -54,10 +55,10 @@ class DataManager{
      * @param {String} name 
      */
     filterName(name){
-        const result = [];
-        for (const elem2 of this.#array) {
-            if (elem2.nev.includes(name))
-            result.push(elem2)
+        const result = []
+        for (const elem of this.#array) {
+            if (elem.nev.includes(name))
+            result.push(elem)
         }
         this.#updateCallback(result)
     }
@@ -65,6 +66,7 @@ class DataManager{
 }
 
 class DataTable {
+    #tbody
     /**
     * @param {DataManager} dataManager
     */
@@ -72,37 +74,49 @@ class DataTable {
         const table = document.createElement('table')
         document.body.appendChild(table)
 
-        const tbody = document.createElement('tbody')
-        table.appendChild(tbody)
-
-        const thead = document.createElement('thead')
-        table.appendChild(thead)
+        this.#tbody = document.createElement('tbody')
+        table.appendChild(this.#tbody)
 
         dataManager.setUpdateCallback((persons)=>{
-            tbody.innerHTML = ' '
+            this.#tbody.innerHTML = ''
             for (const pers of persons){
                 const tr = document.createElement('tr')
-                tbody.appendChild(tr)
+                this.#tbody.appendChild(tr)
                 
                 const td1 = document.createElement('td')
                 tr.appendChild(td1)
-                td1.innerHTML=pers.nev
+                td1.innerHTML = pers.nev
 
                 const td2 = document.createElement('td')
                 tr.appendChild(td2)
-                td2.innerHTML=pers.eletkor
+                td2.innerHTML = pers.eletkor
             }
         })
     }
 }
 
-const datamanager = new DataManager([{eletkor: 67, nev: "Sebestyén Bzi"}, {eletkor: 11, nev: "lili"}, {eletkor: 8, nev: "fanni"}])
+const datamanager = new DataManager([
+    {eletkor: 67, nev: "Sebestyén Bzi"},
+    {eletkor: 11, nev: "lili"},
+    {eletkor: 8, nev: "fanni"}
+])
 const dataTableManager = new DataTable(datamanager)
 
-const input = document.createElement('input')
-tbody.appendChild(input)
+const inputAge = document.createElement('input')
+inputAge.placeholder = 'Eletkor'
+inputAge.id = 'age'
+document.body.appendChild(inputAge)
 
-input.addEventListener('input',(e)=>{
-    e.currentTarget.value = filterAge,filterName
+const inputName =document.createElement('input')
+inputName.placeholder = 'Nev'
+inputName.id = 'name'
+document.body.appendChild(inputName)
+
+inputAge.addEventListener('input', (e) => {
+    datamanager.filterAge(e.currentTarget.value)
+})
+
+inputName.addEventListener('input', (e) => {
+    datamanager.filterName(e.currentTarget.value)
 })
 
