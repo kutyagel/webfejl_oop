@@ -113,7 +113,7 @@ inputName.id = 'name'
 document.body.appendChild(inputName)
 
 inputAge.addEventListener('input', (e) => {
-    datamanager.filterAge(e.currentTarget.value)
+    datamanager.filterAge(Number(e.currentTarget.value))
 })
 
 inputName.addEventListener('input', (e) => {
