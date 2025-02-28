@@ -17,10 +17,18 @@ class Manager{
 
     add(student){
         this.#array.push(student);
-        this.#addCallback(student);
     }
 
     select(student){
         this.#selectCallback(student);
+    }
+
+    /**
+     * Vegigiteral a tombon es meghivja az addcallbacket
+     */
+    render(){
+        for(const student of this.#array){
+            this.#addCallback(student);
+        }
     }
 }
