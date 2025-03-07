@@ -1,3 +1,8 @@
+
+/**
+ * @callback addCallback lefut egy elem hozzaadasanal
+ * @param {Question} question a hozzaadott elem
+ */
 class Manager{
     #array;
 
@@ -11,10 +16,13 @@ class Manager{
 
     #finishCallback;
 
+    #addCallback;
+
     constructor(array = []){
         this.#array = array;
         this.#currentQuestionNumber = 0;
         this.#selectedAnswer={};
+        this.#addCallback = () =>{}
     }
 
     setNextQuestionCallback(callback){
@@ -29,8 +37,30 @@ class Manager{
         this.#finishCallback = callback;
     }
 
+    /**
+     * 
+     * @param {addCallback} callback 
+     */
+    setaddCallback(callback) {
+        this.#addCallback = callback
+    }
+
     add(question){
         this.#array.push(question);
+        this.#addCallback(question)
+    }
+
+    /**
+     * @returns {string} file tartalma
+     */
+    generateTextForExport() {
+        const result = [];
+        for (const question of this.#array) {
+            const line = `${question.questionText};${question.answers.join(';')};${question.rightAnswer}`;
+            result.push(line);
+        }
+        console.log(result)
+        return result.join('\n');
     }
 
     nextQuestion(answer){
